@@ -1,7 +1,7 @@
 Formidable
 ==========
 
-[Github](https://github.com/angshu/formidable)
+[Github](https://github.com/ICT4H-TW/formidable-server)
 
 Prerequisites
 ------------
