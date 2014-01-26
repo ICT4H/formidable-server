@@ -1,11 +1,15 @@
 { "_id"      : "_design/entities",
   "language" : "javascript",
-  "lists"     :
-        {"one" : "function(head, req) {
+  "lists"    :
+        {"one" : "function(head, request) {
                       while(row = getRow()) {
-                        send(JSON.stringify(row.value));
+                          send(JSON.stringify(row.value));
                       }
                   }"},
+  "shows"    :
+        { "fact" : "function(document, request) {
+                        return JSON.stringify({id : document._id, time : document.time, state : document.state});
+                    }"},
   "views"    :
         { "current" :
             { "map"    : "function(fact) { emit(fact.entity, {id : fact.entity, time : fact.time, state : fact.state}); }",
