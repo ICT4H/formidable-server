@@ -44,10 +44,10 @@ A fact represents an update in the system. Facts are relative to a specific time
         'retract': [UUID+]?
     }
 
-A UUID is a [universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier), expressed as a string.
-An EPOCH is a [POSIX timestamp](https://en.wikipedia.org/wiki/Unix_time).
-A TREE is a map, with string keys and ATOMs or TREEs as values.
-An ATOM is a string, an integer, a floating point number or a vector of ATOMs.
+* A UUID is a [universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier), expressed as a string.
+* An EPOCH is a [POSIX timestamp](https://en.wikipedia.org/wiki/Unix_time).
+* A TREE is a map, with string keys and ATOMs or TREEs as values.
+* An ATOM is a string, an integer, a floating point number or a vector of ATOMs.
 
 For example:
 
@@ -97,9 +97,9 @@ For example:
     }
 
 The state of the entity *MUST* be derived via the following algorithm:
-  * Order all facts pertaining to this entity by time.
-  * Remove any facts that appear in any retraction list.
-  * Recursively merge the remaining facts, giving precedence to the more recently asserted facts.
+* Order all facts pertaining to this entity by time.
+* Remove any facts that appear in any retraction list.
+* Recursively merge the remaining facts, giving precedence to the more recently asserted facts.
 
 ###Changes
 
