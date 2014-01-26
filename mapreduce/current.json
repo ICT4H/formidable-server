@@ -28,7 +28,8 @@
 
                               return timeline.reduce(
                                   function(earlier, later) {
-                                      return {id : later.id, state : merge(earlier.state, later.state)};
+                                      later.state = merge(earlier.state, later.state);
+                                      return later;
                                   });
                           }"
              }
