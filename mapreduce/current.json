@@ -1,0 +1,32 @@
+{ "_id"      : "_design/entities",
+  "language" : "javascript",
+  "views"    :
+        { "current" :
+            { "map"    : "function(fact) { emit(fact.entity, {id : fact.entity, time : fact.time, state : fact.state}); }",
+              "reduce" : "function(keys, facts, rereduce) {
+                              var timeline = facts.sort(function(a, b) { return a.time - b.time; });
+
+                              var merge = function(under, over) {
+
+                                              if(over == null) return under;
+
+                                              var hitBottom = (under == null || typeof(under) != 'object' || typeof(over) != 'object');
+                                              if(hitBottom) return over;  
+
+                                              for (var field in over) {
+                                                  under[field] = merge(under[field], over[field]);
+                                              }
+
+                                              return under;
+                                          }
+
+                              return timeline.reduce(
+                                  function(earlier, later) {
+                                      later.state = merge(earlier.state, later.state);
+                                      return later;
+                                  });
+                          }"
+
+             }
+        }
+}

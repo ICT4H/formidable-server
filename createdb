@@ -1,5 +1,5 @@
 #!/bin/sh
 
-curl -X PUT http://admin:password@localhost:5984/events 
+curl -X PUT http://admin:password@localhost:5984/formidable
 
-curl -X PUT -H "Content-Type: application/json" -T - http://admin:password@localhost:5984/events/_design/records < eventing/records.json 
+curl -X PUT -H "Content-Type: application/json" -T - http://admin:password@localhost:5984/formidable/_design/entities < mapreduce/current.json

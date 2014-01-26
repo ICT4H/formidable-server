@@ -1,0 +1,3 @@
+#!/bin/sh
+
+curl -X DELETE -T - http://admin:password@localhost:5984/formidable 

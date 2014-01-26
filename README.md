@@ -15,9 +15,13 @@ Installation
 * vagrant reload
 * ./createdb
 
-Reload is needed because of [a bug in restarting couchdb](https://bugs.launchpad.net/ubuntu/+source/couchdb/+bug/448682) when it's first installed. 
+Optionally:
 
-This will install a headless 12.04 Ubuntu VM and start CouchDB, [port mapped to the local machine](http://localhost:5984/_utils/). 
+* ./seeddb
+
+This will install a headless 12.04 Ubuntu VM and start CouchDB, [port mapped to the local machine](http://localhost:5984/_utils/).
+
+(The reload is needed because of [a bug in restarting couchdb](https://bugs.launchpad.net/ubuntu/+source/couchdb/+bug/448682) when it's first installed.)
 
 API
 ---
@@ -37,7 +41,7 @@ A fact represents an update in the system. Facts are relative to a specific time
         'time': EPOCH,
         'origin': URN?,
         'author': URN?,
-        'assert':
+        'state':
         {
             UUID: TREE+,
         }?,
@@ -56,11 +60,11 @@ For example:
         'time': 1390750744,
         'origin': 'urn:android:34F5D5C87AC1E5AF',
         'author': 'urn:email:cgrant@example.com',
-        'assert':
+        'state':
         {
             '5b2a5594-5edb-4527-90db-a13bc5971e5d':
             {
-                'name': 'Moses Musoke',
+                'name': 'Musoke Moses',
                 'age': 32
             }
         }
@@ -90,7 +94,7 @@ For example:
                    'uri': 'http://example.org/fact/b3053f2b-873b-46a3-87de-481a36a72cbd'}],
         'state':
         {
-                'name': 'Moses Musoke',
+                'name': 'Musoke Moses',
                 'age': 34,
                 'blood pressure': {'systolic': 130, 'diastolic': 85} 
         }
@@ -100,6 +104,8 @@ The state of the entity *MUST* be derived via the following algorithm:
 * Order all facts pertaining to this entity by time.
 * Remove any facts that appear in any retraction list.
 * Recursively merge the remaining facts, giving precedence to the more recently asserted facts.
+
+If you have seeded your database, see [the entities](http://localhost:5984/formidable/_design/entities/_view/current?group=true).
 
 ###Changes
 

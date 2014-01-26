@@ -1,0 +1,6 @@
+#!/bin/sh
+
+curl -X POST -H "Content-Type: application/json" -T - http://admin:password@localhost:5984/formidable/ < seed/agnus1.json
+curl -X POST -H "Content-Type: application/json" -T - http://admin:password@localhost:5984/formidable/ < seed/moses1.json
+curl -X POST -H "Content-Type: application/json" -T - http://admin:password@localhost:5984/formidable/ < seed/moses2.json
+curl -X POST -H "Content-Type: application/json" -T - http://admin:password@localhost:5984/formidable/ < seed/moses3.json
