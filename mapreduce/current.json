@@ -1,5 +1,11 @@
 { "_id"      : "_design/entities",
   "language" : "javascript",
+  "lists"     :
+        {"one" : "function(head, req) {
+                      while(row = getRow()) {
+                        send(JSON.stringify(row.value));
+                      }
+                  }"},
   "views"    :
         { "current" :
             { "map"    : "function(fact) { emit(fact.entity, {id : fact.entity, time : fact.time, state : fact.state}); }",
@@ -26,7 +32,6 @@
                                       return later;
                                   });
                           }"
-
              }
         }
 }

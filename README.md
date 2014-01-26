@@ -105,7 +105,7 @@ The state of the entity *MUST* be derived via the following algorithm:
 * Remove any facts that appear in any retraction list.
 * Recursively merge the remaining facts, giving precedence to the more recently asserted facts.
 
-If you have seeded your database, see [all the entities](http://localhost:5984/formidable/_design/entities/_view/current?group=true) or [Moses' entity](http://localhost:5984/formidable/_design/entities/_view/current?key=%22604c61ef-33c2-4654-aa23-0cc5396ba6c5%22&group=true).
+If you have seeded your database, see [all the entities](http://localhost:5984/formidable/_design/entities/_view/current?group=true) or [Moses' entity](http://localhost:5984/formidable/_design/entities/_list/one/current?key=%22604c61ef-33c2-4654-aa23-0cc5396ba6c5%22&group=true).
 
 ###Changes
 
