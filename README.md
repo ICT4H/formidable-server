@@ -37,15 +37,15 @@ Clients *MUST* ignore any additional keys that they do not know how to interpret
 A fact represents an update in the system. Facts are relative to a specific time and are identified with their own UUID.
 
     {
-        'id': UUID,
-        'time': EPOCH,
-        'origin': URN?,
-        'author': URN?,
-        'state':
+        "id": UUID,
+        "time": EPOCH,
+        "origin": URN?,
+        "author": URN?,
+        "state":
         {
             UUID: TREE+,
         }?,
-        'retract': [UUID+]?
+        "retract": [UUID+]?
     }
 
 * A UUID is a [universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier), expressed as a string.
@@ -56,16 +56,16 @@ A fact represents an update in the system. Facts are relative to a specific time
 For example:
 
     {
-        'id': '3bde8815-5057-4a01-9c54-5b1d5d59bbd4'
-        'time': 1390750744,
-        'origin': 'urn:android:34F5D5C87AC1E5AF',
-        'author': 'urn:email:cgrant@example.com',
-        'state':
+        "id": "3bde8815-5057-4a01-9c54-5b1d5d59bbd4"
+        "time": 1390750744,
+        "origin": "urn:android:34F5D5C87AC1E5AF",
+        "author": "urn:email:cgrant@example.com",
+        "state":
         {
-            '5b2a5594-5edb-4527-90db-a13bc5971e5d':
+            "5b2a5594-5edb-4527-90db-a13bc5971e5d":
             {
-                'name': 'Musoke Moses',
-                'age': 32
+                "name": "Musoke Moses",
+                "age": 32
             }
         }
     }
@@ -77,9 +77,9 @@ TODO: Find appropriate URN schemes for identifying Android devices and system us
 An entity is a record produced by combining multiple facts. 
 
     {
-        'id': UUID,
-        'facts': [LINK+],
-        'state': TREE
+        "id": UUID,
+        "facts": [LINK+],
+        "state": TREE
     }
 
 A LINK is a map with `id` and `uri` attributes.
@@ -87,16 +87,16 @@ A LINK is a map with `id` and `uri` attributes.
 For example:
 
     {
-        'id': '0ecc5a29-7ae5-4d50-a73e-e10c5e2232fc',
-        'facts': [{'id': '5b2a5594-5edb-4527-90db-a13bc5971e5d',
-                   'uri': 'http://example.org/fact/5b2a5594-5edb-4527-90db-a13bc5971e5d'},
-                  {'id': 'b3053f2b-873b-46a3-87de-481a36a72cbd',
-                   'uri': 'http://example.org/fact/b3053f2b-873b-46a3-87de-481a36a72cbd'}],
-        'state':
+        "id": "0ecc5a29-7ae5-4d50-a73e-e10c5e2232fc",
+        "facts": [{"id": "5b2a5594-5edb-4527-90db-a13bc5971e5d",
+                   "uri": "http://example.org/fact/5b2a5594-5edb-4527-90db-a13bc5971e5d"},
+                  {"id": "b3053f2b-873b-46a3-87de-481a36a72cbd",
+                   "uri": "http://example.org/fact/b3053f2b-873b-46a3-87de-481a36a72cbd"}],
+        "state":
         {
-                'name': 'Musoke Moses',
-                'age': 34,
-                'blood pressure': {'systolic': 130, 'diastolic': 85} 
+                "name": "Musoke Moses",
+                "age": 34,
+                "blood pressure": {"systolic": 130, "diastolic": 85}
         }
     }
 
@@ -116,17 +116,17 @@ The feed is paginated, and the boundries between pages *MUST* remain stable.
 All but the most recent page *MUST* have a next URI and all but the oldest page *MUST* have a prev URI.
 
     {
-        'next': URI?,
-        'prev': URI?,
-        'facts': [LINK]
+        "next": URI?,
+        "prev": URI?,
+        "facts": [LINK]
     }
 
 For example:
 
     {
-        'prev': 'http://example.org/changes/6af5aba4-4ead-4db7-9846-e7fab147735c',
-        'facts': [{'id': '5b2a5594-5edb-4527-90db-a13bc5971e5d',
-                   'uri': 'http://example.org/fact/5b2a5594-5edb-4527-90db-a13bc5971e5d'},
-                  {'id': 'b3053f2b-873b-46a3-87de-481a36a72cbd',
-                   'uri': 'http://example.org/fact/b3053f2b-873b-46a3-87de-481a36a72cbd'}]
+        "prev": "http://example.org/changes/6af5aba4-4ead-4db7-9846-e7fab147735c",
+        "facts": [{"id": "5b2a5594-5edb-4527-90db-a13bc5971e5d",
+                   "uri": "http://example.org/fact/5b2a5594-5edb-4527-90db-a13bc5971e5d"},
+                  {"id": "b3053f2b-873b-46a3-87de-481a36a72cbd",
+                   "uri": "http://example.org/fact/b3053f2b-873b-46a3-87de-481a36a72cbd"}]
     }
