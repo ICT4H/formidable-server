@@ -8,7 +8,8 @@
                   }"},
   "shows"    :
         { "fact" : "function(document, request) {
-                        return JSON.stringify({id : document._id, time : document.time, state : document.state});
+                        return { headers : { \"Content-Type\" : \"application/json\" }, 
+                                 body : JSON.stringify({id : document._id, time : document.time, state : document.state})};
                     }"},
   "views"    :
         { "current" :
